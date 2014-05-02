@@ -216,3 +216,37 @@ O(log(n))
 ; Exercise 1.34
 (f f) -> (f 2) -> (2 2) -> 2 is not applicable
 
+; Exercise 1.40
+(define cubic (lambda (a b c)
+    (lambda (x)
+        (+ (* (* x x) x)
+           (* (* x x) a)
+           (* x b)
+           c))))
+
+; Exercise 1.41
+(define double (lambda (p)
+    (lambda (x)
+        (p (p x)))))
+
+(((double (double double)) inc) 5) this is quite hard,
+basicly try to imagine that (double (double)) means to (quadruple) and
+(quadruple quadruple) means to perform some action 16x, thats why
+the result is 21
+
+; Exercise 1.42
+(define compose (lambda (p q)
+    (lambda (x)
+        (p (q x)))))
+
+; Exercise 1.43
+(define repeated (lambda (p n)
+    (if (= n 1) p
+        (compose p (repeated p (- n 1))))))
+
+; Exercise 1.46
+(define iterative-improve (lambda (good-enough improve)
+    (lambda (g)
+        (if (good-enough g) g
+            ((iterative-improve good-enough) (improve g))))))
+

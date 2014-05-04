@@ -150,13 +150,13 @@ applied on x and y returns first or second element of pair.
         (reverse (iter l (list int) odd?)))))
 
 ; Exercise 2.21
-(define (square-list items)
+(define square-list (lambda (items)
     (if (null? items)
         ()
-        (cons (square (car items)) (square-list (cdr items)))))
+        (cons (square (car items)) (square-list (cdr items))))))
 
-(define (square-list items)
-    (map (lambda (x) (* x x)) items))
+(define square-list (lambda (items)
+    (map (lambda (x) (* x x)) items)))
 
 ; Exercise 2.22
 Because cons prepends element to list, Louise Reasoner is building the list in
@@ -229,6 +229,11 @@ list of two lists (123) (456)
         (if (not (pair? x)) (fce x)
             (tree-map fce x))) tree)))
 
+; Exercise 2.33
+(define accumulate (lambda (op initial sequence)
+    (if (null? sequence) initial
+        (op (car sequence)
+            (accumulate op initial (cdr sequence))))))
 
-
-
+(define map (lambda (p sequence)
+    (accumulate (lambda (x y) (cons (p x) y)) () sequence)))

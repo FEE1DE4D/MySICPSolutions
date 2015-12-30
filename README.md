@@ -1,10 +1,5 @@
 MySICPSolutions
 ===============
-  
-Even though there are many solutions to SICP exercises, I decided to publish my own solutions. Not only  
-because it can be interesting to see more than one or two solutions, but also because its kinda motivating  
-and maybe it will help me to finish the work I started.  
-
 
 Usefull links
 -------------  
